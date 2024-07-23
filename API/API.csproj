@@ -9,12 +9,19 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.6" />
+    <PackageReference Include="Microsoft.AspNetCore.Cors" Version="2.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.6">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.6" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.6.2" />
+   
+  <Reference Include="Microsoft.PackageManagement.NuGetProvider">
+    <HintPath>C:\Pranav\DatingApp\dlls\Microsoft.PackageManagement.NuGetProvider-2.8.5.208.dll</HintPath>
+  </Reference>
+
+
   </ItemGroup>
 
   <ItemGroup>
