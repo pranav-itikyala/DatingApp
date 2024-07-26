@@ -13,7 +13,7 @@ import { HomeComponent } from './home/home.component';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
   standalone:true,
-  imports: [NavComponent,HomeComponent,RegisterComponent]
+  imports: [NavComponent,HomeComponent,RegisterComponent,RouterOutlet]
 })
 export class AppComponent implements OnInit {
 
