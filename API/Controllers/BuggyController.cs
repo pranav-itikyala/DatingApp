@@ -26,18 +26,18 @@ public ActionResult<AppUser> GetNotFound()
     return thing;
 }
 [HttpGet("server-error")]
-public ActionResult<string> GetServerError()
+public ActionResult<AppUser> GetServerError()
 {
-    var thing = context.Users.Find(-1);
+   
+var thing = context.Users.Find(-1) ?? throw new Exception("A bad thing has happened");
 
-    var thingToReturn = thing!.ToString();
+    return thing;
 
-            return thingToReturn;
-        }
+}
 
-        [HttpGet("bad-request")]
-        public ActionResult<string> GetBadRequest()
-        {
-            return BadRequest("This was not a good request");
-        }
+[HttpGet("bad-request")]
+public ActionResult<string> GetBadRequest()
+    {
+        return BadRequest("This was not a good request");
+    }
 }

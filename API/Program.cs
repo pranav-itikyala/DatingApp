@@ -2,6 +2,7 @@
 
 using API;
 using API.Data;
+using API.Errors;
 using API.Extensions;
 using Microsoft.EntityFrameworkCore;
 
@@ -34,6 +35,7 @@ builder.Services.AddIdentityServices(builder.Configuration);
 var app = builder.Build();
 
 // Debugging middleware to log requests and headers
+app.UseMiddleware<ExceptionMiddleware>();
 app.Use(async (context, next) =>
 {
     Console.WriteLine("Request Headers:");
