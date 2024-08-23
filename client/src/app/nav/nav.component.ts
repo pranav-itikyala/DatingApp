@@ -16,7 +16,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class NavComponent {
   accountService=inject(AccountService);
-  router=inject(Router)
+  router=inject(Router);
   toastr=inject(ToastrService);
   
   model:any={};
@@ -27,14 +27,10 @@ login()
   this.accountService.login(this.model).subscribe({
     next: _ =>
       {
-
-       void this.router.navigateByUrl('/members')
-        
-        
-        
+       void this.router.navigateByUrl('/members');
       },
       error: error=>this.toastr.error(error.error)
-  })
+  });
   console.log(this.model);
 }
 logout()

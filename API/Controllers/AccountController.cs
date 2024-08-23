@@ -16,20 +16,23 @@ public class AccountController(DataContext context,iTokenService tokenService) :
     {
 
         if(await UserExists(registerDto.Username)) return BadRequest("Username is taken");
-        using  var hmac=new HMACSHA256();
-        var user =new AppUser{
-            UserName = registerDto.Username.ToLower(),
-            PasswordHash=hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDto.Password)),
-            PasswordSalt=hmac.Key
-        };
-        context.Users.Add(user);
-        await context.SaveChangesAsync();
-        return new UserDto
-        {
-            Username = user.UserName,
-            Token=tokenService.CreateToken(user)
+            return Ok();
+      
+        // using  var hmac=new HMACSHA256();
+        // var user = new AppUser
+        // {
+        //     UserName = registerDto.Username.ToLower(),
+        //     PasswordHash=hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDto.Password)),
+        //     PasswordSalt=hmac.Key
+        // };
+        // context.Users.Add(user);
+        // await context.SaveChangesAsync();
+        // return new UserDto
+        // {
+        //     Username = user.UserName,
+        //     Token=tokenService.CreateToken(user)
             
-        };
+        // };
 
 
         
@@ -42,7 +45,7 @@ public class AccountController(DataContext context,iTokenService tokenService) :
         int i;
         var user=await context.Users.FirstOrDefaultAsync(x => x.UserName==loginDto.UserName.ToLower());
         if (user==null) return Unauthorized("Invalid username or password");
-        using var hmac = new HMACSHA256(user.PasswordSalt);
+        using var hmac = new HMACSHA512(user.PasswordSalt);
         var computedHash=hmac.ComputeHash(Encoding.UTF8.GetBytes(loginDto.Password));
         for(i=0;i<computedHash.Length;i++)
         {
