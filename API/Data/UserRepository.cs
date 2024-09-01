@@ -60,4 +60,10 @@ public class UserRepository : IUserRepository
     {
         _context.Entry(user).State = EntityState.Modified;
     }
+
+    public async Task<bool> SaveAllAsync()
+    {
+        // Save all changes made in this context to the database
+        return await _context.SaveChangesAsync() > 0;
+    }
 }

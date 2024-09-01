@@ -13,7 +13,7 @@ import { HomeComponent } from './home/home.component';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
   standalone:true,
-  imports: [NavComponent,HomeComponent,RegisterComponent,RouterOutlet]
+  imports: [NavComponent,HomeComponent,RegisterComponent,RouterOutlet,NgxSpinnerComponent]
 })
 export class AppComponent implements OnInit {
 
@@ -40,5 +40,6 @@ export class AppComponent implements OnInit {
 }import { ɵAnimationGroupPlayer } from '@angular/animations';
 import { NgFor } from '@angular/common';
 import { RegisterComponent } from './register/register.component';
+import { NgxSpinnerComponent } from 'ngx-spinner';
 
 
