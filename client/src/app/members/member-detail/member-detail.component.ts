@@ -3,12 +3,14 @@ import { MembersService } from '../../_services/members.service';
 import { ActivatedRoute } from '@angular/router';
 import { Member } from '../../_models/member';
 import {TabDirective, TabsModule } from 'ngx-bootstrap/tabs'
+import { TimeagoModule, TimeagoPipe } from 'ngx-timeago';
+import { DatePipe } from '@angular/common';
 //import { Gallery, GalleryItem, GalleryModule, ImageItem } from 'ng-gallery';
 
 @Component({
   selector: 'app-member-detail',
   standalone: true,
-  imports: [TabsModule],
+  imports: [TabsModule,TimeagoModule,DatePipe],
   //imports: [TabsModule,GalleryModule],
   templateUrl: './member-detail.component.html',
   styleUrl: './member-detail.component.css'
@@ -30,7 +32,7 @@ export class MemberDetailComponent implements OnInit {
     this.memberService.getMember(username).subscribe({
       next:member=>{this.member=member;
       //   member.photos.map(p => {
-      //     //this.images.push(new ImageItem({src:p.url,thumb:p.url}))
+      //     this.images.push(new ImageItem({src:p.url,thumb:p.url}))
       // }
       // )
       }
