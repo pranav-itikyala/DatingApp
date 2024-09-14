@@ -16,9 +16,8 @@ import { ButtonsModule } from 'ngx-bootstrap/buttons';
     imports: [MemberCardComponent,PaginationModule,FormsModule,ButtonsModule]
 })
 export class MemberListComponent implements OnInit {
-  private accountService=inject(AccountService);
+
   public memberService=inject(MembersService);
-  userParams=new UserParams(this.accountService.currentUser());
   genderList=[{value:'male',display:'Males'},{value:'female',display:'Females'}]
     ngOnInit(): void {
       if(!this.memberService.paginatedResult()) this.loadMembers();

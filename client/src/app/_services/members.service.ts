@@ -20,7 +20,7 @@ export class MembersService {
   paginatedResult=signal<PaginatedResult<Member[]> | null>(null);
   memberCache=new Map();
   user=this.accountService.currentUser();
-  userParams= model<UserParams>(new UserParams(this.user));
+  userParams= signal<UserParams>(new UserParams(this.user));
 
   resetUserParams(){
     this.userParams.set(new UserParams(this.user))
@@ -74,11 +74,11 @@ export class MembersService {
     .find((m:Member)=>m.userName===username);
     if(member) return of(member);
     
-    return this.http.get<Member>(this.baseUrl.apiUrl+'users/'+username);
+    return this.http.get<Member>(this.baseUrl+'users/'+username);
   }
 
   updateMember(member: Member) {
-    return this.http.put(this.baseUrl.apiUrl + 'users', member).pipe(
+    return this.http.put(this.baseUrl + 'users', member).pipe(
       // tap(()=>
       // {
       //   this.members.update(members=> members.map(m => m.userName=== member.userName? member: m))
@@ -88,7 +88,7 @@ export class MembersService {
   }
 
   setMainPhoto(photo: Photo) {
-    return this.http.put(this.baseUrl.apiUrl + 'users/set-main-photo/' + photo.id, {}).pipe(
+    return this.http.put(this.baseUrl + 'users/set-main-photo/' + photo.id, {}).pipe(
       // tap(()=>{
       //   this.members.update(members=> members.map(m=>{
       //     if(m.photos.includes(photo)){
@@ -103,7 +103,7 @@ export class MembersService {
   }
 
   deletePhoto(photo: Photo) {
-    return this.http.delete(this.baseUrl.apiUrl + 'users/delete-photo/' + photo.id).pipe(
+    return this.http.delete(this.baseUrl+ 'users/delete-photo/' + photo.id).pipe(
       // tap(()=>{
       //   this.members.update(members=> members.map(m=>{
       //     if(m.photos.includes(photo)){
