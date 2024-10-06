@@ -4,6 +4,6 @@ namespace API;
 
 public interface iTokenService
 {
-    string CreateToken (AppUser user);
+    Task<string> CreateToken (AppUser user);
     
 }
